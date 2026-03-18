@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Links</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Perfil -->
+        <div class="profile">
+            <div class="profile-image">
+                <img src="./img/86135cd6c4fd6f6311b02a966f03c306_0.jpeg" alt="Foto de Perfil" id="profileImg">
+            </div>
+            <h1 class="username">@Antonio Pires</h1>
+            <p class="bio">Desenvolvedor Web | Estudante do IFSP Araraquara</p>
+        </div>
+
+        <div class="links">
+    <!-- REDES SOCIAIS -->
+    <a href="https://instagram.com/@eutonhao_" target="_blank" class="link-item">
+        <i class="fab fa-instagram"></i>
+        <span class="link-title">Instagram</span>
+    </a>
+    
+    
+    <!-- VÍDEO E MÚSICA -->
+    
+    <a href="https://open.spotify.com/user/seu-id" target="_blank" class="link-item">
+        <i class="fab fa-spotify"></i>
+        <span class="link-title">Spotify</span>
+    </a>
+    
+    <!-- CONTATO -->
+    <a href="https://wa.me/5516996345393" target="_blank" class="link-item">
+        <i class="fab fa-whatsapp"></i>
+        <span class="link-title">WhatsApp</span>
+    </a>
+    
+    
+    <a href="mailto:antoniokikoaugusto@gmail.com" target="_blank" class="link-item">
+        <i class="fas fa-envelope"></i>
+        <span class="link-title">E-mail</span>
+    </a>
+    
+    <!-- PROFISSIONAL -->
+    <a href="https://github.com/AntonioPires03" target="_blank" class="link-item">
+        <i class="fab fa-github"></i>
+        <span class="link-title">GitHub</span>
+    </a>
+    
+    <a href="https://seusite.com" target="_blank" class="link-item">
+        <i class="fas fa-globe"></i>
+        <span class="link-title">Meu Site</span>
+    </a>
+    
+    <a href="https://meuportfolio.com" target="_blank" class="link-item">
+        <i class="fas fa-briefcase"></i>
+        <span class="link-title">Portfólio</span>
+    </a>    
+
+</div>
+
+        <!-- Rodapé -->
+        <footer>
+            <p>© 2026 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <!-- Modal para estatísticas (opcional) -->
+    <div id="statsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Estatísticas do Link</h2>
+            <p id="linkStats"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

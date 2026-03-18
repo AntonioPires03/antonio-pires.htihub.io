@@ -1,0 +1,648 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-color: #333;
+    --link-bg: #ffffff;
+    --link-hover: #f0f0f0;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Perfil */
+.profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.bio {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Links */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--link-bg);
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background: var(--link-hover);
+}
+
+.link-item:active {
+    transform: translateY(0);
+}
+
+.link-item i {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.link-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.link-stats {
+    font-size: 12px;
+    color: #999;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+/* Cores específicas para cada plataforma */
+.link-item[data-platform="github"] i { color: #333; }
+.link-item[data-platform="linkedin"] i { color: #0077b5; }
+.link-item[data-platform="twitter"] i { color: #1da1f2; }
+.link-item[data-platform="instagram"] i { color: #e4405f; }
+.link-item[data-platform="youtube"] i { color: #ff0000; }
+.link-item[data-platform="facebook"] i { color: #1877f2; }
+.link-item[data-platform="tiktok"] i { color: #000000; }
+.link-item[data-platform="whatsapp"] i { color: #25d366; }
+.link-item[data-platform="telegram"] i { color: #0088cc; }
+.link-item[data-platform="spotify"] i { color: #1db954; }
+
+/* Rodapé */
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .username {
+        font-size: 20px;
+    }
+    
+    .bio {
+        font-size: 14px;
+    }
+    
+    .link-item {
+        padding: 12px 20px;
+    }
+    
+    .link-item i {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    
+    .link-title {
+        font-size: 14px;
+    }
+}
+
+/* Tema escuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        --card-bg: rgba(30, 30, 40, 0.95);
+        --text-color: #fff;
+        --link-bg: rgba(255, 255, 255, 0.1);
+        --link-hover: rgba(255, 255, 255, 0.2);
+    }
+    
+    .username, .bio {
+        color: #fff;
+    }
+    
+    .bio {
+        color: #ccc;
+    }
+    
+    .link-item {
+        color: #fff;
+    }
+    
+    .link-stats {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ccc;
+    }
+}
+/* Seções de links */
+.link-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    color: var(--text-color);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    opacity: 0.8;
+}
+
+/* Ajuste para os links com descrição */
+.link-item small {
+    font-size: 12px;
+    color: #999;
+    margin-left: auto;
+    background: rgba(0,0,0,0.05);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+/* Hover nos links */
+.link-item:hover small {
+    background: rgba(0,0,0,0.1);
+}
+
+/* Tema escuro */
+@media (prefers-color-scheme: dark) {
+    .link-item small {
+        background: rgba(255,255,255,0.1);
+        color: #ccc;
+    }
+}
+/* style.css - Totalmente responsivo para celular */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* remove o cinza ao tocar no celular */
+}
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-color: #333;
+    --link-bg: white;
+    --link-hover: #f5f5f5;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --border-radius: 24px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    min-height: -webkit-fill-available; /* ajuste para celular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px; /* espaçamento nas laterais */
+}
+
+/* CONTAINER PRINCIPAL - RESPONSIVO */
+.container {
+    max-width: 500px; /* não fica muito largo no tablet/desktop */
+    width: 100%; /* ocupa toda largura disponível no celular */
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PERFIL */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+    word-break: break-word; /* quebra texto longo */
+}
+
+.bio {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0 10px;
+    word-break: break-word;
+}
+
+/* ÁREA DOS LINKS */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* espaçamento entre links */
+    margin-bottom: 25px;
+}
+
+/* ESTILO DOS LINKS - OTIMIZADO PARA TOQUE */
+.link-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px; /* padding grande para dedos */
+    background: var(--link-bg);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 60px; /* altura mínima para toque */
+}
+
+/* EFEITO AO TOCAR NO CELULAR */
+.link-item:active {
+    transform: scale(0.98);
+    background: var(--link-hover);
+}
+
+/* ÍCONES */
+.link-item i {
+    font-size: 24px;
+    width: 35px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+/* TEXTO DO LINK */
+.link-title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* CORES DOS ÍCONES POR PLATAFORMA */
+.fa-instagram { color: #E4405F; }
+.fa-spotify { color: #1DB954; }
+.fa-whatsapp { color: #25D366; }
+.fa-envelope { color: #EA4335; }
+.fa-github { color: #333; }
+.fa-globe { color: #4285F4; }
+.fa-briefcase { color: #4A5568; }
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* MODAL (OPCIONAL) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 16px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 20% auto;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+/* ========== MEDIA QUERY PARA CELULAR ========== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px; /* menos espaçamento nas laterais */
+    }
+
+    .container {
+        padding: 20px 15px; /* menos padding interno */
+        border-radius: 20px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .username {
+        font-size: 22px;
+    }
+
+    .bio {
+        font-size: 14px;
+        padding: 0 5px;
+    }
+
+    .link-item {
+        padding: 14px 16px;
+        min-height: 55px;
+    }
+
+    .link-item i {
+        font-size: 22px;
+        width: 32px;
+        margin-right: 12px;
+    }
+
+    .link-title {
+        font-size: 15px;
+    }
+}
+
+/* PARA CELULARES MUITO PEQUENOS (menos de 360px) */
+@media (max-width: 360px) {
+    .container {
+        padding: 15px 12px;
+    }
+
+    .profile-image {
+        width: 85px;
+        height: 85px;
+    }
+
+    .username {
+        font-size: 20px;
+    }
+
+    .profile-image {
+        border-width: 3px;
+    }
+}
+
+/* MODO ESCURO (OPCIONAL - SEGUE O TEMA DO CELULAR) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        --card-bg: rgba(30, 30, 40, 0.95);
+        --text-color: #fff;
+        --link-bg: rgba(255, 255, 255, 0.1);
+        --link-hover: rgba(255, 255, 255, 0.15);
+    }
+
+    body {
+        background: var(--bg-gradient);
+    }
+
+    .username {
+        color: #fff;
+    }
+
+    .bio {
+        color: #ccc;
+    }
+
+    .link-item {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .link-item:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Ajuste cores dos ícones no modo escuro */
+    .fa-github { color: #fff; }
+    .fa-briefcase { color: #a0aec0; }
+
+    footer {
+        color: #666;
+        border-top-color: #333;
+    }
+
+    .modal-content {
+        background: #2d2d3a;
+        color: #fff;
+    }
+
+    .close {
+        color: #999;
+    }
+}
+
+/* CORREÇÃO PARA IMAGEM QUEBRADA */
+.profile-image img[alt] {
+    font-size: 14px;
+    text-align: center;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
